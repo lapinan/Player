@@ -6,12 +6,25 @@
 //
 
 import Foundation
+import UIKit
+import SDWebImage
 
 class PlayerViewModel {
     private let model = PlayerModel()
     
+    weak var backgroundImage: UIImageView?
+    weak var songImage: UIImageView?
+    weak var artistNameLabel: UILabel?
+    weak var songNameLabel: UILabel?
+    
     //MARK: Intent(s)
     func getMainSong() {
-        model.getMainSong()
+        model.getMainSong { player in
+            self.artistNameLabel?.text = player.nameArtistString
+            self.songNameLabel?.text = player.nameSongString
+            print(player.imageString)
+            self.songImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
+            self.backgroundImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
+        }
     }
 }

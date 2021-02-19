@@ -9,7 +9,7 @@ import Foundation
 
 struct PlayerModel {
     
-    func getMainSong() {
+    func getMainSong(competion: @escaping (Player) -> () ) {
         let urlString = "https://myradio24.com/users/5491/status.json"
         guard let url = URL(string: urlString) else {
             print("CHECK: urlString - \(urlString)")
@@ -23,7 +23,10 @@ struct PlayerModel {
             }
             do {
                 let json = try JSONDecoder().decode(MainSongJSONModel.self, from: data)
-                print(json)
+                let player = Player(imageString: "https://myradio24.com/\(json.img)", nameSongString: json.song, nameArtistString: json.artist)
+                DispatchQueue.main.async {
+                    competion(player)
+                }
             }catch let error {
                 print(error)
             }
