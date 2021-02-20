@@ -25,16 +25,21 @@ class SongsViewController: UIViewController {
         table.rowHeight = 70
         return table
     }()
-    private lazy var navBarView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
-        view.addSubview(navBarTitle)
-        return view
-    }()
+//    private lazy var navBarView: UIView = {
+//        let view = UIView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.backgroundColor = .black
+//        view.addSubview(navBarTitle)
+//        return view
+//    }()
     private let navBarTitle: UILabel = {
         let label = UILabel()
-        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .white
+        label.backgroundColor = .black
+        label.text = "Последние треки"
+        label.textAlignment = .center
         return label
     }()
     
@@ -42,6 +47,7 @@ class SongsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
     
+        setNavBarViewConstraints()
         setSongsTableViewConstraints()
     }
     
@@ -63,7 +69,15 @@ class SongsViewController: UIViewController {
     private func setSongsTableViewConstraints() {
         view.addSubview(songsTableView)
         songsTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(navBarTitle.snp.bottom)
+        }
+    }
+    private func setNavBarViewConstraints() {
+        view.addSubview(navBarTitle)
+        navBarTitle.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(50)
         }
     }
 }
