@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import ProgressHUD
 
 class PlayerViewController: UIViewController {
     let viewModel = PlayerViewModel()
@@ -89,6 +90,8 @@ class PlayerViewController: UIViewController {
         return button
     }()
     
+    var isShowed = false
+    
     //MARK: Override
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,16 +106,26 @@ class PlayerViewController: UIViewController {
         setVolumeSliderConstraints()
         setVolumeLabelConstraints()
         
+        if !isShowed {
+            ProgressHUD.animationType = .circleStrokeSpin
+            ProgressHUD.show()
+            viewModel.getMainSong()
+            isShowed = !isShowed
+            ProgressHUD.dismiss()
+        }
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        
+        ProgressHUD.dismiss()
         viewModel.backgroundImage = backgroundImage
         viewModel.songImage = songImage
         viewModel.songNameLabel = nameSongLabel
         viewModel.artistNameLabel = nameArtistLabel
-        viewModel.getMainSong()
+        
+        if isShowed {
+            viewModel.getMainSong()
+        }
         
     }
     override func viewWillDisappear(_ animated: Bool) {

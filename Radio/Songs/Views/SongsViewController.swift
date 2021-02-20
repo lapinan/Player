@@ -44,7 +44,7 @@ class SongsViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        ProgressHUD.dismiss()
+        
     }
     
     //MARK: Constraints
