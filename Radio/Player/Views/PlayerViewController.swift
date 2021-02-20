@@ -79,6 +79,7 @@ class PlayerViewController: UIViewController {
         slider.thumbTintColor = .white
         slider.minimumTrackTintColor = .white
         slider.maximumTrackTintColor = .white
+        slider.value = 50.0
         return slider
     }()
     private let historyButton: UIButton = {
@@ -101,6 +102,9 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        volumeLabel.text = "Громкость: \(Int(round(volumeSlider.value)))%"
+        player.volume = volumeSlider.value
+        
         setBackgroundImageConstraints()
         setSongImageConstratins()
         setNameArtistLabelConstraints()
@@ -162,6 +166,7 @@ class PlayerViewController: UIViewController {
     @objc
     private func editSlider(_ sender: UISlider) {
         volumeLabel.text = "Громкость: \(Int(round(sender.value)))%"
+        player.volume = sender.value
     }
     @objc
     private func showSongsVC() {
@@ -233,7 +238,7 @@ class PlayerViewController: UIViewController {
     private func setVolumeSliderConstraints() {
         view.addSubview(volumeSlider)
         volumeSlider.snp.makeConstraints { make in
-            make.right.left.equalToSuperview().inset(20)
+            make.right.left.equalToSuperview().inset(60)
             make.bottom.equalTo(historyButton.snp.top).inset(-20)
         }
     }
