@@ -25,7 +25,19 @@ class SongsViewController: UIViewController {
         table.rowHeight = 70
         return table
     }()
-
+    private lazy var navBarView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.addSubview(navBarTitle)
+        return view
+    }()
+    private let navBarTitle: UILabel = {
+        let label = UILabel()
+        
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .darkGray

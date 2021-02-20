@@ -8,6 +8,7 @@ target 'Radio' do
 pod 'SnapKit', '~> 5.0.0'
 pod 'ProgressHUD'
 pod 'SDWebImage', '~> 5.0'
+pod 'SwiftAudio', '~> 0.11.2'
 
   # Pods for Radio
 

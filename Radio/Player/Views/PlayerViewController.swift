@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import ProgressHUD
+import SwiftAudio
 
 class PlayerViewController: UIViewController {
     let viewModel = PlayerViewModel()
@@ -91,6 +92,10 @@ class PlayerViewController: UIViewController {
     }()
     
     var isShowed = false
+    var isPlay = false
+    
+    let player = AudioPlayer()
+    
     
     //MARK: Override
     override func viewDidLoad() {
@@ -114,7 +119,14 @@ class PlayerViewController: UIViewController {
             ProgressHUD.dismiss()
         }
         
+        
+        statusWithTimer()
     }
+    
+    func statusWithTimer() {
+        let myTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(fetchStates), userInfo: nil, repeats: true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         ProgressHUD.dismiss()
@@ -122,16 +134,29 @@ class PlayerViewController: UIViewController {
         viewModel.songImage = songImage
         viewModel.songNameLabel = nameSongLabel
         viewModel.artistNameLabel = nameArtistLabel
-        
-        if isShowed {
-            viewModel.getMainSong()
-        }
-        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
+    
+    private func play() {
+        if !isPlay {
+            let audioItem = DefaultAudioItem(audioUrl: "https://listen2.myradio24.com/5491", sourceType: .stream)
+            do {
+                try player.load(item: audioItem, playWhenReady: true)
+            }catch let error {
+                print(error)
+            }
+            player.play()
+            playButton.setTitle("Stop", for: .normal)
+            isPlay = !isPlay
+        } else {
+            player.stop()
+            isPlay = !isPlay
+            playButton.setTitle("Play", for: .normal)
+        }
+    }
     
     //MARK: Actions
     @objc
@@ -143,7 +168,10 @@ class PlayerViewController: UIViewController {
         present(viewModel.showSongsVC(), animated: true)
     }
     @objc private func playMusic() {
-    
+        play()
+    }
+    @objc private func fetchStates() {
+        viewModel.getMainSong()
     }
     
     //MARK: Constraints
