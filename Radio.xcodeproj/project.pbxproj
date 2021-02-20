@@ -15,6 +15,7 @@
 		AD424AE025E0F65B001BC846 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424ADF25E0F65B001BC846 /* SongTableViewCell.swift */; };
 		AD424AE925E1329A001BC846 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424AE825E1329A001BC846 /* SongModel.swift */; };
 		AD424AEC25E13461001BC846 /* SongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424AEB25E13461001BC846 /* SongViewModel.swift */; };
+		AD4A553225E17825009EB3CB /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = AD4A553125E17825009EB3CB /* .gitignore */; };
 		ADFB072625E04A8E00A12543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB072525E04A8E00A12543 /* AppDelegate.swift */; };
 		ADFB072825E04A8E00A12543 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB072725E04A8E00A12543 /* SceneDelegate.swift */; };
 		ADFB072F25E04A9200A12543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFB072E25E04A9200A12543 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 		AD424ADF25E0F65B001BC846 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
 		AD424AE825E1329A001BC846 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		AD424AEB25E13461001BC846 /* SongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewModel.swift; sourceTree = "<group>"; };
+		AD4A553125E17825009EB3CB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		ADFB072225E04A8E00A12543 /* Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFB072525E04A8E00A12543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFB072725E04A8E00A12543 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		ADFB071925E04A8E00A12543 = {
 			isa = PBXGroup;
 			children = (
+				AD4A553125E17825009EB3CB /* .gitignore */,
 				ADFB072425E04A8E00A12543 /* Radio */,
 				ADFB072325E04A8E00A12543 /* Products */,
 				A172322F73EC6B8E6776A991 /* Pods */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADFB073225E04A9200A12543 /* LaunchScreen.storyboard in Resources */,
+				AD4A553225E17825009EB3CB /* .gitignore in Resources */,
 				ADFB072F25E04A9200A12543 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
