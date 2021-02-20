@@ -91,6 +91,8 @@ class PlayerViewController: UIViewController {
         view.backgroundColor = .black
         
         
+        
+        
         setBackgroundImageConstraints()
         setSongImageConstratins()
         setNameArtistLabelConstraints()
@@ -102,11 +104,17 @@ class PlayerViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        
         viewModel.backgroundImage = backgroundImage
         viewModel.songImage = songImage
         viewModel.songNameLabel = nameSongLabel
         viewModel.artistNameLabel = nameArtistLabel
         viewModel.getMainSong()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     
@@ -117,7 +125,7 @@ class PlayerViewController: UIViewController {
     }
     @objc
     private func showSongsVC() {
-        present(viewModel.showSongsVC(), animated: true, completion: nil)
+        navigationController?.pushViewController(viewModel.showSongsVC(), animated: true)
     }
     
     //MARK: Constraints
