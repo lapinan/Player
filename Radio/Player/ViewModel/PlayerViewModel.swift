@@ -22,7 +22,6 @@ class PlayerViewModel {
         model.getMainSong { player in
             self.artistNameLabel?.text = player.nameArtistString
             self.songNameLabel?.text = player.nameSongString
-            print(player.imageString)
             self.songImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
             self.backgroundImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
         }
