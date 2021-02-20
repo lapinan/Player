@@ -38,15 +38,54 @@ class SongsViewController: UIViewController {
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .white
         label.backgroundColor = .black
-        label.text = "Последние треки"
+        label.text = "История"
         label.textAlignment = .center
         return label
     }()
+    private lazy var playerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.addSubview(playerNameArtistLabel)
+        view.addSubview(nameSongLabel)
+        return view
+    }()
+    private let playerNameArtistLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .purple
+        label.minimumScaleFactor = 0.1
+        return label
+    }()
+    private let nameSongLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.font = .systemFont(ofSize: 15, weight: .regular)
+        label.minimumScaleFactor = 0.1
+        label.textColor = .white
+        return label
+    }()
+    private let playButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .purple
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Play", for: .normal)
+        return button
+    }()
+    
+    weak var playerVC: PlayerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
     
+        
+        setPlayerSubViewConstratins()
         setNavBarViewConstraints()
         setSongsTableViewConstraints()
     }
@@ -69,7 +108,8 @@ class SongsViewController: UIViewController {
     private func setSongsTableViewConstraints() {
         view.addSubview(songsTableView)
         songsTableView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(playerView.snp.top)
             make.top.equalTo(navBarTitle.snp.bottom)
         }
     }
@@ -80,6 +120,23 @@ class SongsViewController: UIViewController {
             make.height.equalTo(50)
         }
     }
+    private func setPlayerSubViewConstratins() {
+        view.addSubview(playerView)
+        playerView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(100)
+        }
+//        playButton.snp.makeConstraints { make in
+//            make.height.equalToSuperview().multipliedBy(0.8)
+//            make.width.equalTo(playButton.snp.height)
+//            make.centerY.equalToSuperview()
+//            make.left.equalToSuperview().inset(20)
+//        }
+        DispatchQueue.main.async {
+            self.playButton.layer.cornerRadius = self.playButton.frame.width / 2 
+        }
+    }
+    
 }
 
 //MARK: DataSource

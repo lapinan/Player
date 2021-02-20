@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct PlayerModel {
     
@@ -32,8 +33,9 @@ struct PlayerModel {
             }
         }.resume()
     }
-    func showSongsVC() -> SongsViewController {
+    func showSongsVC(viewC: PlayerViewController) -> SongsViewController {
         let vc = SongsViewController()
+        vc.playerVC = viewC
         return vc
     }
     

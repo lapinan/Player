@@ -170,7 +170,7 @@ class PlayerViewController: UIViewController {
     }
     @objc
     private func showSongsVC() {
-        present(viewModel.showSongsVC(), animated: true)
+        present(viewModel.showSongsVC(vc: self), animated: true)
     }
     @objc private func playMusic() {
         play()
@@ -218,8 +218,8 @@ class PlayerViewController: UIViewController {
         view.addSubview(playButton)
         playButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.width.equalTo(50)
-            make.height.equalTo(50)
+            make.width.equalToSuperview().multipliedBy(0.25)
+            make.height.equalTo(playButton.snp.width)
             make.top.equalTo(nameSongLabel.snp.bottom).inset(-20)
         }
         DispatchQueue.main.async {
