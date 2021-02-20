@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import SDWebImage
+import ProgressHUD
 
 class SongsViewController: UIViewController {
     let viewModel = SongViewModel()
@@ -18,8 +19,8 @@ class SongsViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .none
         table.dataSource = self
+        table.delegate = self
         table.backgroundColor = .darkGray
-        table.indicatorStyle = .black
         table.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.id)
         table.rowHeight = 70
         return table
@@ -34,8 +35,16 @@ class SongsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        ProgressHUD.animationType = .circleStrokeSpin
+        ProgressHUD.show()
         viewModel.tableView = songsTableView
         viewModel.getSongs()
+        ProgressHUD.dismiss()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ProgressHUD.dismiss()
     }
     
     //MARK: Constraints
@@ -55,7 +64,7 @@ extension SongsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.id) as? SongTableViewCell {
-            
+            cell.selectionStyle = .none
             let song = viewModel.songs[indexPath.row]
             
             let names = song.nameString.components(separatedBy: "-")
@@ -70,5 +79,10 @@ extension SongsViewController: UITableViewDataSource {
             return cell
         }
         return UITableViewCell()
+    }
+}
+
+extension SongsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
 }
