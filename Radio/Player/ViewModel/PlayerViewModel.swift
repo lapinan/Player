@@ -17,6 +17,8 @@ class PlayerViewModel {
     weak var artistNameLabel: UILabel?
     weak var songNameLabel: UILabel?
     
+    var songs: [PlayerModel.Song] = []
+    
     //MARK: Intent(s)
     func getMainSong() {
         model.getMainSong { player in

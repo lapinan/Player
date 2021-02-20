@@ -12,6 +12,9 @@
 		AD32D58025E05B15005CDE6B /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32D57F25E05B15005CDE6B /* PlayerViewModel.swift */; };
 		AD32D59025E06271005CDE6B /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32D58F25E06271005CDE6B /* UIImageViewExtension.swift */; };
 		AD424ADC25E0E76C001BC846 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424ADB25E0E76C001BC846 /* SongsViewController.swift */; };
+		AD424AE025E0F65B001BC846 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424ADF25E0F65B001BC846 /* SongTableViewCell.swift */; };
+		AD424AE925E1329A001BC846 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424AE825E1329A001BC846 /* SongModel.swift */; };
+		AD424AEC25E13461001BC846 /* SongViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424AEB25E13461001BC846 /* SongViewModel.swift */; };
 		ADFB072625E04A8E00A12543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB072525E04A8E00A12543 /* AppDelegate.swift */; };
 		ADFB072825E04A8E00A12543 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB072725E04A8E00A12543 /* SceneDelegate.swift */; };
 		ADFB072F25E04A9200A12543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFB072E25E04A9200A12543 /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 		AD32D57F25E05B15005CDE6B /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		AD32D58F25E06271005CDE6B /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		AD424ADB25E0E76C001BC846 /* SongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewController.swift; sourceTree = "<group>"; };
+		AD424ADF25E0F65B001BC846 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
+		AD424AE825E1329A001BC846 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		AD424AEB25E13461001BC846 /* SongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewModel.swift; sourceTree = "<group>"; };
 		ADFB072225E04A8E00A12543 /* Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFB072525E04A8E00A12543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFB072725E04A8E00A12543 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +101,8 @@
 		AD424AD925E0E74C001BC846 /* Songs */ = {
 			isa = PBXGroup;
 			children = (
+				AD424AE325E1325A001BC846 /* Model */,
+				AD424AE225E13251001BC846 /* ViewModel */,
 				AD424ADA25E0E75E001BC846 /* Views */,
 			);
 			path = Songs;
@@ -104,8 +112,25 @@
 			isa = PBXGroup;
 			children = (
 				AD424ADB25E0E76C001BC846 /* SongsViewController.swift */,
+				AD424ADF25E0F65B001BC846 /* SongTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AD424AE225E13251001BC846 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD424AEB25E13461001BC846 /* SongViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AD424AE325E1325A001BC846 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD424AE825E1329A001BC846 /* SongModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		ADFB071925E04A8E00A12543 = {
@@ -293,7 +318,10 @@
 				AD32D57925E05451005CDE6B /* PlayerJSONModel.swift in Sources */,
 				ADFB072625E04A8E00A12543 /* AppDelegate.swift in Sources */,
 				AD32D58025E05B15005CDE6B /* PlayerViewModel.swift in Sources */,
+				AD424AEC25E13461001BC846 /* SongViewModel.swift in Sources */,
 				AD424ADC25E0E76C001BC846 /* SongsViewController.swift in Sources */,
+				AD424AE925E1329A001BC846 /* SongModel.swift in Sources */,
+				AD424AE025E0F65B001BC846 /* SongTableViewCell.swift in Sources */,
 				ADFB072825E04A8E00A12543 /* SceneDelegate.swift in Sources */,
 				ADFB074025E0517500A12543 /* PlayerViewController.swift in Sources */,
 			);

@@ -1,15 +1,14 @@
 //
-//  PlayerModel.swift
+//  SongModel.swift
 //  Radio
 //
-//  Created by Андрей Лапин on 19.02.2021.
+//  Created by Андрей Лапин on 20.02.2021.
 //
 
 import Foundation
 
-struct PlayerModel {
-    
-    func getMainSong(competion: @escaping (Player) -> () ) {
+struct SongModel {
+    func getSongs(completion: @escaping ([Song]) -> () ) {
         let urlString = "https://myradio24.com/users/5491/status.json"
         guard let url = URL(string: urlString) else {
             print("CHECK: urlString - \(urlString)")
@@ -23,29 +22,23 @@ struct PlayerModel {
             }
             do {
                 let json = try JSONDecoder().decode(MainSongJSONModel.self, from: data)
-                let player = Player(imageString: "https://myradio24.com/\(json.img)", nameSongString: json.song, nameArtistString: json.artist)
+                var songs: [Song] = []
+                for song in json.songs {
+                    let song = Song(nameString: song[1], imageString: "https://myradio24.com/\(song[2])", dataString: song[0])
+                    songs.append(song)
+                }
                 DispatchQueue.main.async {
-                    competion(player)
+                    completion(songs)
                 }
             }catch let error {
                 print(error)
             }
         }.resume()
+
     }
-    func showSongsVC() -> SongsViewController {
-        let vc = SongsViewController()
-        return vc
-    }
-    
     struct Song {
         let nameString: String
+        let imageString: String
         let dataString: String
-        let imageString: String
-    }
-    
-    struct Player {
-        let imageString: String
-        let nameSongString: String
-        let nameArtistString: String
     }
 }
