@@ -26,4 +26,7 @@ class PlayerViewModel {
             self.backgroundImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
         }
     }
+    func showSongsVC() -> SongsViewController {
+        return model.showSongsVC()
+    }
 }

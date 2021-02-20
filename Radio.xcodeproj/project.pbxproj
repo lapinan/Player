@@ -11,6 +11,7 @@
 		AD32D57C25E058DF005CDE6B /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32D57B25E058DF005CDE6B /* PlayerModel.swift */; };
 		AD32D58025E05B15005CDE6B /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32D57F25E05B15005CDE6B /* PlayerViewModel.swift */; };
 		AD32D59025E06271005CDE6B /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32D58F25E06271005CDE6B /* UIImageViewExtension.swift */; };
+		AD424ADC25E0E76C001BC846 /* SongsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD424ADB25E0E76C001BC846 /* SongsViewController.swift */; };
 		ADFB072625E04A8E00A12543 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB072525E04A8E00A12543 /* AppDelegate.swift */; };
 		ADFB072825E04A8E00A12543 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFB072725E04A8E00A12543 /* SceneDelegate.swift */; };
 		ADFB072F25E04A9200A12543 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFB072E25E04A9200A12543 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		AD32D57B25E058DF005CDE6B /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		AD32D57F25E05B15005CDE6B /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		AD32D58F25E06271005CDE6B /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		AD424ADB25E0E76C001BC846 /* SongsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewController.swift; sourceTree = "<group>"; };
 		ADFB072225E04A8E00A12543 /* Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFB072525E04A8E00A12543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFB072725E04A8E00A12543 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,22 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		AD424AD925E0E74C001BC846 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				AD424ADA25E0E75E001BC846 /* Views */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
+		AD424ADA25E0E75E001BC846 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AD424ADB25E0E76C001BC846 /* SongsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		ADFB071925E04A8E00A12543 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				AD32D58E25E0625F005CDE6B /* Extension */,
+				AD424AD925E0E74C001BC846 /* Songs */,
 				ADFB073D25E050E000A12543 /* Player */,
 				ADFB073C25E0506D00A12543 /* Storyboard */,
 				ADFB073B25E0505900A12543 /* subFiles */,
@@ -274,6 +293,7 @@
 				AD32D57925E05451005CDE6B /* PlayerJSONModel.swift in Sources */,
 				ADFB072625E04A8E00A12543 /* AppDelegate.swift in Sources */,
 				AD32D58025E05B15005CDE6B /* PlayerViewModel.swift in Sources */,
+				AD424ADC25E0E76C001BC846 /* SongsViewController.swift in Sources */,
 				ADFB072825E04A8E00A12543 /* SceneDelegate.swift in Sources */,
 				ADFB074025E0517500A12543 /* PlayerViewController.swift in Sources */,
 			);

@@ -64,7 +64,7 @@ class PlayerViewController: UIViewController {
         label.text = "Громкость: 0%"
         return label
     }()
-    private let volumeSlide: UISlider = {
+    private let volumeSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 0.0
@@ -74,6 +74,15 @@ class PlayerViewController: UIViewController {
         slider.minimumTrackTintColor = .white
         slider.maximumTrackTintColor = .white
         return slider
+    }()
+    private let historyButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("History", for: .normal)
+        button.tintColor = .white
+        button.titleLabel?.font = .systemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(showSongsVC), for: .touchUpInside)
+        return button
     }()
     
     //MARK: Override
@@ -89,6 +98,7 @@ class PlayerViewController: UIViewController {
         setPlayButtonConstraints()
         setVolumeLabelConstraints()
         setVolumeSliderConstraints()
+        setHistoryButtonConstraints()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -104,6 +114,10 @@ class PlayerViewController: UIViewController {
     @objc
     private func editSlider(_ sender: UISlider) {
         volumeLabel.text = "Громкость: \(Int(round(sender.value)))%"
+    }
+    @objc
+    private func showSongsVC() {
+        present(viewModel.showSongsVC(), animated: true, completion: nil)
     }
     
     //MARK: Constraints
@@ -162,10 +176,18 @@ class PlayerViewController: UIViewController {
         }
     }
     private func setVolumeSliderConstraints() {
-        view.addSubview(volumeSlide)
-        volumeSlide.snp.makeConstraints { make in
+        view.addSubview(volumeSlider)
+        volumeSlider.snp.makeConstraints { make in
             make.right.left.equalToSuperview().inset(20)
             make.top.equalTo(volumeLabel.snp.bottom).inset(-20)
+        }
+    }
+    private func setHistoryButtonConstraints() {
+        view.addSubview(historyButton)
+        historyButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(volumeSlider.snp.bottom).inset(-20)
+            make.height.equalTo(16)
         }
     }
 }

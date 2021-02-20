@@ -32,6 +32,10 @@ struct PlayerModel {
             }
         }.resume()
     }
+    func showSongsVC() -> SongsViewController {
+        let vc = SongsViewController()
+        return vc
+    }
     
     struct Player {
         let imageString: String
