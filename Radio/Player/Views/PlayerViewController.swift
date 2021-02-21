@@ -80,6 +80,7 @@ class PlayerViewController: UIViewController {
         slider.thumbTintColor = .white
         slider.minimumTrackTintColor = .white
         slider.maximumTrackTintColor = .white
+        slider.setThumbImage(UIImage(named: "sliderThumb"), for: .normal)
         slider.value = 50.0
         return slider
     }()
