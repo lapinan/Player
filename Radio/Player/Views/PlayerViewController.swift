@@ -60,17 +60,6 @@ class PlayerViewController: UIViewController {
         button.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
         return button
     }()
-    private let volumeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = .white
-        label.minimumScaleFactor = 0.1
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
-        label.text = "Громкость: 0%"
-        return label
-    }()
     private let volumeSlider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +70,7 @@ class PlayerViewController: UIViewController {
         slider.minimumTrackTintColor = .white
         slider.maximumTrackTintColor = .white
         slider.setThumbImage(UIImage(named: "sliderThumb"), for: .normal)
+        
         slider.value = 50.0
         return slider
     }()
@@ -93,6 +83,27 @@ class PlayerViewController: UIViewController {
         button.addTarget(self, action: #selector(showSongsVC), for: .touchUpInside)
         return button
     }()
+    private let historyButtonLeft: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showSongsVC), for: .touchUpInside)
+        button.setImage(UIImage(named: "history"), for: .normal)
+        return button
+    }()
+    private let noVolumImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "noVolume")
+        return image
+    }()
+    private let yesVolumeImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "yesVolume")
+        return image
+    }()
     
     var isShowed = false
     var isPlay = false
@@ -104,7 +115,6 @@ class PlayerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        volumeLabel.text = "Громкость: \(Int(round(volumeSlider.value)))%"
         player.volume = volumeSlider.value
         
         setBackgroundImageConstraints()
@@ -112,7 +122,8 @@ class PlayerViewController: UIViewController {
         setNameArtistLabelConstraints()
         setNameSongLabelConstraints()
         setPlayButtonConstraints()
-        setVolumeLabelConstraints()
+        setNoVolumeImageConstraints()
+        setYesVolumeConstraints()
         setVolumeSliderConstraints()
         setHistoryButtonConstraints()
         
@@ -129,7 +140,7 @@ class PlayerViewController: UIViewController {
     }
     
     func statusWithTimer() {
-        let myTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(fetchStates), userInfo: nil, repeats: true)
+        let myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(fetchStates), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -170,7 +181,6 @@ class PlayerViewController: UIViewController {
     //MARK: Actions
     @objc
     private func editSlider(_ sender: UISlider) {
-        volumeLabel.text = "Громкость: \(Int(round(sender.value)))%"
         player.volume = sender.value
     }
     @objc
@@ -229,22 +239,13 @@ class PlayerViewController: UIViewController {
         }
         playButton.layer.cornerRadius = 30
     }
-    private func setVolumeLabelConstraints() {
-        view.addSubview(volumeLabel)
-        volumeLabel.snp.makeConstraints { make in
-            make.left.equalTo(songImage.snp.left)
-            make.right.equalTo(playButton.snp.left)
-            make.height.equalTo(20)
-            make.top.equalTo(playButton.snp.bottom).inset(-20)
-        }
-    }
     private func setVolumeSliderConstraints() {
         view.addSubview(volumeSlider)
         volumeSlider.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.left.equalTo(volumeLabel.snp.left)
+            make.left.equalTo(noVolumImage.snp.right).inset(-10.29)
             make.height.equalTo(3)
-            make.top.equalTo(volumeLabel.snp.bottom).inset(-6)
+            make.right.equalTo(yesVolumeImage.snp.left).inset(-10)
+            make.top.equalTo(playButton.snp.bottom).inset(-34)
         }
     }
     private func setHistoryButtonConstraints() {
@@ -253,6 +254,34 @@ class PlayerViewController: UIViewController {
             make.centerX.equalToSuperview()
             make.top.equalTo(volumeSlider.snp.bottom).inset(-20)
             make.height.equalTo(30)
+        }
+        setHistory2ButtonConstratins()
+    }
+    private func setHistory2ButtonConstratins() {
+        view.addSubview(historyButtonLeft)
+        historyButtonLeft.snp.makeConstraints { make in
+            make.right.equalTo(historyButton.snp.left).inset(-10)
+            make.centerY.equalTo(historyButton.snp.centerY)
+            make.width.equalTo(20)
+            make.height.equalTo(12)
+        }
+    }
+    private func setNoVolumeImageConstraints() {
+        view.addSubview(noVolumImage)
+        noVolumImage.snp.makeConstraints { make in
+            make.left.equalTo(songImage.snp.left)
+            make.width.equalTo(7.71)
+            make.height.equalTo(12)
+            make.top.equalTo(playButton.snp.bottom).inset(-30)
+        }
+    }
+    private func setYesVolumeConstraints() {
+        view.addSubview(yesVolumeImage)
+        yesVolumeImage.snp.makeConstraints { make in
+            make.width.equalTo(14.68)
+            make.height.equalTo(12)
+            make.right.equalTo(songImage.snp.right)
+            make.top.equalTo(playButton.snp.bottom).inset(-30)
         }
     }
 }
