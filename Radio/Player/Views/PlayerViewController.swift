@@ -70,7 +70,7 @@ class PlayerViewController: UIViewController {
         slider.minimumTrackTintColor = .white
         slider.maximumTrackTintColor = .white
         slider.setThumbImage(UIImage(named: "sliderThumb"), for: .normal)
-        
+        slider.setThumbImage(UIImage(named: "sldierThumb"), for: .highlighted)
         slider.value = 50.0
         return slider
     }()
@@ -104,7 +104,12 @@ class PlayerViewController: UIViewController {
         image.image = UIImage(named: "yesVolume")
         return image
     }()
-    
+    private let historyView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
     var isShowed = false
     var isPlay = false
     
@@ -125,7 +130,9 @@ class PlayerViewController: UIViewController {
         setNoVolumeImageConstraints()
         setYesVolumeConstraints()
         setVolumeSliderConstraints()
-        setHistoryButtonConstraints()
+        setHistoryViewConstraints()
+        
+        
         
         if !isShowed {
             ProgressHUD.animationType = .circleStrokeSpin
@@ -248,19 +255,20 @@ class PlayerViewController: UIViewController {
         }
     }
     private func setHistoryButtonConstraints() {
-        view.addSubview(historyButton)
+        historyView.addSubview(historyButton)
         historyButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(volumeSlider.snp.bottom).inset(-20)
+            make.right.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.height.equalTo(30)
+            make.width.equalTo(147)
         }
         setHistory2ButtonConstratins()
     }
     private func setHistory2ButtonConstratins() {
-        view.addSubview(historyButtonLeft)
+        historyView.addSubview(historyButtonLeft)
         historyButtonLeft.snp.makeConstraints { make in
-            make.right.equalTo(historyButton.snp.left).inset(-10)
-            make.centerY.equalTo(historyButton.snp.centerY)
+            make.left.equalToSuperview()
+            make.centerY.equalToSuperview()
             make.width.equalTo(20)
             make.height.equalTo(12)
         }
@@ -282,5 +290,15 @@ class PlayerViewController: UIViewController {
             make.right.equalTo(songImage.snp.right)
             make.top.equalTo(playButton.snp.bottom).inset(-30)
         }
+    }
+    private func setHistoryViewConstraints() {
+        view.addSubview(historyView)
+        historyView.snp.makeConstraints { make in
+            make.height.equalTo(30)
+            make.width.equalTo(177)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(volumeSlider.snp.bottom).inset(-34)
+        }
+        setHistoryButtonConstraints()
     }
 }
