@@ -149,9 +149,13 @@ class PlayerViewController: UIViewController {
             let audioItem = DefaultAudioItem(audioUrl: "https://listen2.myradio24.com/5491", sourceType: .stream)
             do {
                 try player.load(item: audioItem, playWhenReady: true)
+                
+                try? AudioSessionController.shared.set(category: .playback)
+                try? AudioSessionController.shared.activateSession()
             }catch let error {
                 print(error)
             }
+            player.nowPlayingInfoController.set(keyValue: NowPlayingInfoProperty.isLiveStream(true))
             player.play()
             playButton.setTitle("Stop", for: .normal)
             isPlay = !isPlay
@@ -222,9 +226,7 @@ class PlayerViewController: UIViewController {
             make.height.equalTo(60)
             make.top.equalTo(nameSongLabel.snp.bottom).inset(-20)
         }
-        DispatchQueue.main.async {
-            self.playButton.layer.cornerRadius = self.playButton.frame.width / 2
-        }
+        playButton.layer.cornerRadius = 30
     }
     private func setVolumeLabelConstraints() {
         view.addSubview(volumeLabel)
@@ -240,7 +242,7 @@ class PlayerViewController: UIViewController {
         volumeSlider.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.left.equalTo(volumeLabel.snp.left)
-            make.height.equalTo(0.1)
+            make.height.equalTo(3)
             make.top.equalTo(volumeLabel.snp.bottom).inset(-6)
         }
     }
