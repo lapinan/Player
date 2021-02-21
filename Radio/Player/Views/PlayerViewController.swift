@@ -19,7 +19,7 @@ class PlayerViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
-        image.alpha = 0.5
+        image.addBlurEffect()
         return image
     }()
     private let songImage: UIImageView = {
@@ -174,7 +174,7 @@ class PlayerViewController: UIViewController {
     }
     @objc
     private func showSongsVC() {
-        present(viewModel.showSongsVC(vc: self), animated: true)
+        present(viewModel.showSongsVC(vc: self, backImage: backgroundImage.image!), animated: true)
     }
     @objc private func playMusic() {
         play()

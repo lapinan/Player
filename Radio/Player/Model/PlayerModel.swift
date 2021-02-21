@@ -33,9 +33,10 @@ struct PlayerModel {
             }
         }.resume()
     }
-    func showSongsVC(viewC: PlayerViewController) -> SongsViewController {
+    func showSongsVC(viewC: PlayerViewController, backImage: UIImage) -> SongsViewController {
         let vc = SongsViewController()
         vc.playerVC = viewC
+        vc.backImage.image = backImage
         return vc
     }
     

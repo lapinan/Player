@@ -20,13 +20,19 @@ class SongsViewController: UIViewController {
         table.separatorStyle = .none
         table.dataSource = self
         table.delegate = self
-        table.backgroundColor = .darkGray
+        table.backgroundColor = .clear
         table.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.id)
         table.rowHeight = 70
         return table
     }()
-
-    
+    let backImage: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.alpha = 0.5
+        image.addBlurEffect()
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
    
 
     weak var playerVC: PlayerViewController?
@@ -35,17 +41,14 @@ class SongsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
     
-       
+        setBackImageConstraints()
         setSongsTableViewConstraints()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ProgressHUD.animationType = .circleStrokeSpin
-        ProgressHUD.show()
         viewModel.tableView = songsTableView
         viewModel.getSongs()
-        ProgressHUD.dismiss()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -60,7 +63,12 @@ class SongsViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-    
+    private func setBackImageConstraints() {
+        view.addSubview(backImage)
+        backImage.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 }
 
 //MARK: DataSource
@@ -72,6 +80,11 @@ extension SongsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.id) as? SongTableViewCell {
             cell.selectionStyle = .none
+            
+            cell.backgroundColor = .clear
+            cell.contentView.backgroundColor = .clear
+            cell.backgroundView?.backgroundColor = .clear
+            
             let song = viewModel.songs[indexPath.row]
             
             let names = song.nameString.components(separatedBy: "-")
