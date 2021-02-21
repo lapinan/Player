@@ -16,6 +16,7 @@ class PlayerViewModel {
     weak var songImage: UIImageView?
     weak var artistNameLabel: UILabel?
     weak var songNameLabel: UILabel?
+    weak var historyView: UIView?
     
     var songs: [PlayerModel.Song] = []
     
@@ -24,6 +25,7 @@ class PlayerViewModel {
         model.getMainSong { player in
             self.artistNameLabel?.text = player.nameArtistString
             self.songNameLabel?.text = player.nameSongString
+            self.historyView?.isHidden = false
             self.songImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
             self.backgroundImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
         }

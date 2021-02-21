@@ -64,14 +64,14 @@ class PlayerViewController: UIViewController {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         slider.minimumValue = 0.0
-        slider.maximumValue = 100.0
+        slider.maximumValue = 50.0
         slider.addTarget(self, action: #selector(editSlider(_ :)), for: .valueChanged)
         slider.thumbTintColor = .white
         slider.minimumTrackTintColor = .white
         slider.maximumTrackTintColor = .white
         slider.setThumbImage(UIImage(named: "sliderThumb"), for: .normal)
         slider.setThumbImage(UIImage(named: "sldierThumb"), for: .highlighted)
-        slider.value = 50.0
+        slider.value = 25.0
         return slider
     }()
     private let historyButton: UIButton = {
@@ -136,10 +136,8 @@ class PlayerViewController: UIViewController {
         
         if !isShowed {
             ProgressHUD.animationType = .circleStrokeSpin
-            ProgressHUD.show()
             viewModel.getMainSong()
             isShowed = !isShowed
-            ProgressHUD.dismiss()
         }
         
         
@@ -152,10 +150,13 @@ class PlayerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        historyView.isHidden = true 
+        
         viewModel.backgroundImage = backgroundImage
         viewModel.songImage = songImage
         viewModel.songNameLabel = nameSongLabel
         viewModel.artistNameLabel = nameArtistLabel
+        viewModel.historyView = historyView
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -249,7 +250,7 @@ class PlayerViewController: UIViewController {
         view.addSubview(volumeSlider)
         volumeSlider.snp.makeConstraints { make in
             make.left.equalTo(noVolumImage.snp.right).inset(-10.29)
-            make.height.equalTo(3)
+            make.height.equalTo(10)
             make.right.equalTo(yesVolumeImage.snp.left).inset(-10)
             make.top.equalTo(playButton.snp.bottom).inset(-34)
         }
