@@ -145,7 +145,6 @@ class PlayerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        ProgressHUD.dismiss()
         viewModel.backgroundImage = backgroundImage
         viewModel.songImage = songImage
         viewModel.songNameLabel = nameSongLabel

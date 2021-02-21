@@ -22,7 +22,7 @@ class SongsViewController: UIViewController {
         table.delegate = self
         table.backgroundColor = .clear
         table.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.id)
-        table.rowHeight = 70
+        table.rowHeight = 90
         return table
     }()
     let backImage: UIImageView = {
