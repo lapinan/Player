@@ -57,6 +57,26 @@ class SongsViewController: UIViewController {
         view.backgroundColor = .black
         return view
     }()
+    private let playButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "playButton"), for: .normal)
+        return button
+    }()
+    private let nameArtistLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 16)
+        return label
+    }()
+    private let nameSongLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1)
+        label.font = .systemFont(ofSize: 16)
+        return label
+    }()
    
 
     weak var playerVC: PlayerViewController?
@@ -116,6 +136,35 @@ class SongsViewController: UIViewController {
         myTabBarView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(94)
+        }
+        setPlayButtonConstraints()
+        setNameArtistLabelConstraints()
+        setNameSongLabelConstraints()
+    }
+    private func setPlayButtonConstraints() {
+        myTabBarView.addSubview(playButton)
+        playButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(11)
+            make.height.width.equalTo(40)
+            make.left.equalToSuperview().inset(25)
+        }
+    }
+    private func setNameArtistLabelConstraints() {
+        myTabBarView.addSubview(nameArtistLabel)
+        nameArtistLabel.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.top.equalToSuperview().inset(6)
+            make.left.equalTo(playButton.snp.right).inset(-10)
+            make.right.equalTo(50)
+        }
+    }
+    private func setNameSongLabelConstraints() {
+        myTabBarView.addSubview(nameSongLabel)
+        nameSongLabel.snp.makeConstraints { make in
+            make.height.equalTo(19)
+            make.left.equalTo(playButton.snp.right).inset(-10)
+            make.top.equalTo(nameArtistLabel.snp.bottom)
+            make.right.equalToSuperview().inset(20)
         }
     }
 }

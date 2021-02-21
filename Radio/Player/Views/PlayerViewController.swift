@@ -56,7 +56,7 @@ class PlayerViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .purple
-        button.setTitle("Play", for: .normal)
+        button.setImage(UIImage(named: "playButton"), for: .normal)
         button.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
         return button
     }()
