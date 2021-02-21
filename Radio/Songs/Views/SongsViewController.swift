@@ -33,6 +33,30 @@ class SongsViewController: UIViewController {
         image.contentMode = .scaleAspectFill
         return image
     }()
+    private let myNavBar: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        return view
+    }()
+    private let myTitleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 16)
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        label.text = "Предыдущие треки"
+        label.textAlignment = .center
+        label.minimumScaleFactor = 0.1
+        return label
+    }()
+    private let myTabBarView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        return view
+    }()
    
 
     weak var playerVC: PlayerViewController?
@@ -42,6 +66,8 @@ class SongsViewController: UIViewController {
         view.backgroundColor = .darkGray
     
         setBackImageConstraints()
+        setMyNavBarConstraints()
+        setMyTabBarViewConstraints()
         setSongsTableViewConstraints()
     }
     
@@ -60,13 +86,36 @@ class SongsViewController: UIViewController {
     private func setSongsTableViewConstraints() {
         view.addSubview(songsTableView)
         songsTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.top.equalTo(myNavBar.snp.bottom)
+            make.bottom.equalTo(myTabBarView.snp.top)
         }
     }
     private func setBackImageConstraints() {
         view.addSubview(backImage)
         backImage.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+    }
+    private func setMyNavBarConstraints() {
+        view.addSubview(myNavBar)
+        myNavBar.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(43)
+        }
+        myNavBar.addSubview(myTitleLabel)
+        myTitleLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.top.equalToSuperview().inset(12)
+            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().inset(20)
+        }
+    }
+    private func setMyTabBarViewConstraints() {
+        view.addSubview(myTabBarView)
+        myTabBarView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.height.equalTo(94)
         }
     }
 }
