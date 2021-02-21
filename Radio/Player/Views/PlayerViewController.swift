@@ -174,7 +174,7 @@ class PlayerViewController: UIViewController {
     }
     @objc
     private func showSongsVC() {
-        present(viewModel.showSongsVC(vc: self, backImage: backgroundImage.image!), animated: true)
+        present(viewModel.showSongsVC(vc: self, backImage: backgroundImage.image!, nameSong: nameSongLabel.text!, nameArtist: nameArtistLabel.text!), animated: true)
     }
     @objc private func playMusic() {
         play()

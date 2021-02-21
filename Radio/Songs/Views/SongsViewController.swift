@@ -63,14 +63,14 @@ class SongsViewController: UIViewController {
         button.setImage(UIImage(named: "playButton"), for: .normal)
         return button
     }()
-    private let nameArtistLabel: UILabel = {
+    let nameArtistLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .white
         label.font = .systemFont(ofSize: 16)
         return label
     }()
-    private let nameSongLabel: UILabel = {
+    let nameSongLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 0.667, green: 0.667, blue: 0.667, alpha: 1)
