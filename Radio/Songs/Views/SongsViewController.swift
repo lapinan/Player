@@ -61,6 +61,7 @@ class SongsViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "playButton"), for: .normal)
+        button.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
         return button
     }()
     let nameArtistLabel: UILabel = {
@@ -111,6 +112,14 @@ class SongsViewController: UIViewController {
             make.bottom.equalTo(myTabBarView.snp.top)
         }
     }
+    
+    
+    //MARK: Actions
+    @objc
+    private func playMusic() {
+        playerVC?.play()
+    }
+    
     private func setBackImageConstraints() {
         view.addSubview(backImage)
         backImage.snp.makeConstraints { make in

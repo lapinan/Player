@@ -144,7 +144,7 @@ class PlayerViewController: UIViewController {
     }
     
     
-    private func play() {
+    func play() {
         if !isPlay {
             let audioItem = DefaultAudioItem(audioUrl: "https://listen2.myradio24.com/5491", sourceType: .stream)
             do {
