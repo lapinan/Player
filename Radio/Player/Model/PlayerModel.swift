@@ -10,7 +10,7 @@ import UIKit
 
 struct PlayerModel {
     
-    func getMainSong(competion: @escaping (Player) -> () ) {
+    func getMainSong(competion: @escaping (Player, [Song]) -> () ) {
         let urlString = "https://myradio24.com/users/5491/status.json"
         guard let url = URL(string: urlString) else {
             print("CHECK: urlString - \(urlString)")
@@ -23,19 +23,25 @@ struct PlayerModel {
                 return
             }
             do {
+                var songs: [Song] = []
                 let json = try JSONDecoder().decode(MainSongJSONModel.self, from: data)
                 let player = Player(imageString: "https://myradio24.com/\(json.img)", nameSongString: json.song, nameArtistString: json.artist)
+                for song in json.songs {
+                    let song = Song(nameString: song[1], dataString: song[0], imageString: "https://myradio24.com/\(song[2])")
+                    songs.append(song)
+                }
                 DispatchQueue.main.async {
-                    competion(player)
+                    competion(player, songs)
                 }
             }catch let error {
                 print(error)
             }
         }.resume()
     }
-    func showSongsVC(viewC: PlayerViewController, backImage: UIImage, nameSong: String, nameArtist: String) -> SongsViewController {
+    func showSongsVC(viewC: PlayerViewController, backImage: UIImage, nameSong: String, nameArtist: String, songs: [Song]) -> SongsViewController {
         let vc = SongsViewController()
         vc.playerVC = viewC
+        vc.songs = songs
         vc.nameSongLabel.text = nameSong
         vc.nameArtistLabel.text = nameArtist
         vc.backImage.image = backImage

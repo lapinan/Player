@@ -22,15 +22,16 @@ class PlayerViewModel {
     
     //MARK: Intent(s)
     func getMainSong() {
-        model.getMainSong { player in
+        model.getMainSong { player, songs  in
             self.artistNameLabel?.text = player.nameArtistString
             self.songNameLabel?.text = player.nameSongString
             self.historyView?.isHidden = false
+            self.songs = songs
             self.songImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
             self.backgroundImage?.sd_setImage(with: URL(string: "\(player.imageString)"), completed: nil)
         }
     }
     func showSongsVC(vc: PlayerViewController, backImage: UIImage, nameSong: String, nameArtist: String) -> SongsViewController {
-        return model.showSongsVC(viewC: vc, backImage: backImage, nameSong: nameSong, nameArtist: nameArtist)
+        return model.showSongsVC(viewC: vc, backImage: backImage, nameSong: nameSong, nameArtist: nameArtist, songs: self.songs)
     }
 }

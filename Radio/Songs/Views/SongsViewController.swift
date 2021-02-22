@@ -81,6 +81,7 @@ class SongsViewController: UIViewController {
    
 
     weak var playerVC: PlayerViewController?
+    var songs: [PlayerModel.Song] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +95,8 @@ class SongsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.tableView = songsTableView
-        viewModel.getSongs()
+//        viewModel.tableView = songsTableView
+//        viewModel.getSongs()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -181,7 +182,7 @@ class SongsViewController: UIViewController {
 //MARK: DataSource
 extension SongsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.songs.count
+        return songs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -192,7 +193,7 @@ extension SongsViewController: UITableViewDataSource {
             cell.contentView.backgroundColor = .clear
             cell.backgroundView?.backgroundColor = .clear
             
-            let song = viewModel.songs[indexPath.row]
+            let song = songs[indexPath.row]
             
             let names = song.nameString.components(separatedBy: "-")
             
