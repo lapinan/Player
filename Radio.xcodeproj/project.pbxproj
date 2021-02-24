@@ -37,7 +37,7 @@
 		AD424AEB25E13461001BC846 /* SongViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongViewModel.swift; sourceTree = "<group>"; };
 		AD4A553125E17825009EB3CB /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		AD4A553525E18776009EB3CB /* PlayerModelParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModelParse.swift; sourceTree = "<group>"; };
-		ADFB072225E04A8E00A12543 /* Radio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFB072225E04A8E00A12543 /* radiohessen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = radiohessen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFB072525E04A8E00A12543 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADFB072725E04A8E00A12543 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ADFB072E25E04A9200A12543 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		ADFB072325E04A8E00A12543 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADFB072225E04A8E00A12543 /* Radio.app */,
+				ADFB072225E04A8E00A12543 /* radiohessen.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -206,9 +206,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ADFB072125E04A8E00A12543 /* Radio */ = {
+		ADFB072125E04A8E00A12543 /* radiohessen */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADFB073625E04A9200A12543 /* Build configuration list for PBXNativeTarget "Radio" */;
+			buildConfigurationList = ADFB073625E04A9200A12543 /* Build configuration list for PBXNativeTarget "radiohessen" */;
 			buildPhases = (
 				94AC0F00BF17DE095FDF3AC3 /* [CP] Check Pods Manifest.lock */,
 				ADFB071E25E04A8E00A12543 /* Sources */,
@@ -220,9 +220,9 @@
 			);
 			dependencies = (
 			);
-			name = Radio;
+			name = radiohessen;
 			productName = Radio;
-			productReference = ADFB072225E04A8E00A12543 /* Radio.app */;
+			productReference = ADFB072225E04A8E00A12543 /* radiohessen.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -252,7 +252,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ADFB072125E04A8E00A12543 /* Radio */,
+				ADFB072125E04A8E00A12543 /* radiohessen */,
 			);
 		};
 /* End PBXProject section */
@@ -468,13 +468,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 54FN4U326V;
 				INFOPLIST_FILE = Radio/subFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cidia.radiorh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cidia.radiohessen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -488,13 +488,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 54FN4U326V;
 				INFOPLIST_FILE = Radio/subFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cidia.radiorh;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cidia.radiohessen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -513,7 +513,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADFB073625E04A9200A12543 /* Build configuration list for PBXNativeTarget "Radio" */ = {
+		ADFB073625E04A9200A12543 /* Build configuration list for PBXNativeTarget "radiohessen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ADFB073725E04A9200A12543 /* Debug */,

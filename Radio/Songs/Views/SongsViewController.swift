@@ -60,7 +60,6 @@ class SongsViewController: UIViewController {
     private let playButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(named: "playButton"), for: .normal)
         button.addTarget(self, action: #selector(playMusic), for: .touchUpInside)
         return button
     }()
@@ -82,6 +81,7 @@ class SongsViewController: UIViewController {
 
     weak var playerVC: PlayerViewController?
     var songs: [PlayerModel.Song] = []
+    var isPlayer = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +91,15 @@ class SongsViewController: UIViewController {
         setMyNavBarConstraints()
         setMyTabBarViewConstraints()
         setSongsTableViewConstraints()
+        
+        if isPlayer {
+            playButton.setImage(UIImage(named: "stopButton"), for: .normal)
+            isPlayer = !isPlayer
+        } else {
+            playButton.setImage(UIImage(named: "playButton"), for: .normal)
+            isPlayer = !isPlayer
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -119,6 +128,14 @@ class SongsViewController: UIViewController {
     @objc
     private func playMusic() {
         playerVC?.play()
+        if isPlayer {
+            playButton.setImage(UIImage(named: "stopButton"), for: .normal)
+            isPlayer = !isPlayer
+        } else {
+            playButton.setImage(UIImage(named: "playButton"), for: .normal)
+            isPlayer = !isPlayer
+        }
+
     }
     
     private func setBackImageConstraints() {

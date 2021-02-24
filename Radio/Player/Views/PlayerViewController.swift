@@ -154,6 +154,9 @@ class PlayerViewController: UIViewController {
     
     let player = AudioPlayer()
     
+    let songsViewController = SongsViewController()
+    
+
     
     //MARK: Override
     override func viewDidLoad() {
@@ -228,12 +231,12 @@ class PlayerViewController: UIViewController {
             }
             player.nowPlayingInfoController.set(keyValue: NowPlayingInfoProperty.isLiveStream(true))
             player.play()
-            playButton.setTitle("Stop", for: .normal)
+            playButton.setImage(UIImage(named: "stopButton"), for: .normal)
             isPlay = !isPlay
         } else {
             player.stop()
             isPlay = !isPlay
-            playButton.setTitle("Play", for: .normal)
+            playButton.setImage(UIImage(named: "playButton"), for: .normal)
         }
     }
     
@@ -244,7 +247,7 @@ class PlayerViewController: UIViewController {
     }
     @objc
     private func showSongsVC() {
-        present(viewModel.showSongsVC(vc: self, backImage: backgroundImage.image!, nameSong: nameSongLabel.text!, nameArtist: nameArtistLabel.text!), animated: true)
+        present(viewModel.showSongsVC(vc: self, backImage: backgroundImage.image!, nameSong: nameSongLabel.text!, nameArtist: nameArtistLabel.text!, isPlayer: isPlay), animated: true)
     }
     @objc private func playMusic() {
         play()
