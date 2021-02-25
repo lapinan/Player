@@ -7,8 +7,8 @@
 
 import UIKit
 import SnapKit
-import ProgressHUD
 import SwiftAudio
+
 
 class PlayerViewController: UIViewController {
     let viewModel = PlayerViewModel()
@@ -190,7 +190,6 @@ class PlayerViewController: UIViewController {
         
         
         if !isShowed {
-            ProgressHUD.animationType = .circleStrokeSpin
             viewModel.getMainSong()
             isShowed = !isShowed
         }
